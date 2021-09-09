@@ -246,7 +246,8 @@ class SalarySlip(TransactionBase):
 		payroll_based_on = frappe.db.get_value("Payroll Settings", None, "payroll_based_on")
 		include_holidays_in_total_working_days = frappe.db.get_single_value("Payroll Settings", "include_holidays_in_total_working_days")
 
-		working_days = date_diff(self.end_date, self.start_date) + 1
+		# working_days = date_diff(self.end_date, self.start_date) + 1
+		working_days = 30
 		if for_preview:
 			self.total_working_days = working_days
 			self.payment_days = working_days
