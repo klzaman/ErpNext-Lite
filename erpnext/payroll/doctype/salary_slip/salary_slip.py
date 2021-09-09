@@ -246,7 +246,7 @@ class SalarySlip(TransactionBase):
 		payroll_based_on = frappe.db.get_value("Payroll Settings", None, "payroll_based_on")
 		include_holidays_in_total_working_days = frappe.db.get_single_value("Payroll Settings", "include_holidays_in_total_working_days")
 
-		# working_days = date_diff(self.end_date, self.start_date) + 1
+		# Set fixed 30 days as working_days
 		working_days = 30
 		if for_preview:
 			self.total_working_days = working_days
@@ -330,7 +330,8 @@ class SalarySlip(TransactionBase):
 				frappe.throw(_("Employee relieved on {0} must be set as 'Left'")
 					.format(relieving_date))
 
-		payment_days = date_diff(end_date, start_date) + 1
+		# Set 30 days as payment_days
+		payment_days = 30
 
 		if not cint(include_holidays_in_total_working_days):
 			holidays = self.get_holidays_for_employee(start_date, end_date)
