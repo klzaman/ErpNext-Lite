@@ -236,7 +236,7 @@ class PayrollEntry(Document):
 		if earnings or deductions:
 			journal_entry = frappe.new_doc("Journal Entry")
 			journal_entry.voucher_type = "Journal Entry"
-			journal_entry.user_remark = _("Accrual Journal Entry for salaries from {0} to {1}")\
+			journal_entry.user_remark = _("قيد إستحقاق رواتب للفترة من {0} وحتى {1}")\
 				.format(self.start_date, self.end_date)
 			journal_entry.company = self.company
 			journal_entry.posting_date = self.posting_date
@@ -289,7 +289,7 @@ class PayrollEntry(Document):
 			journal_entry.save()
 
 			try:
-				journal_entry.submit()
+				# journal_entry.submit()
 				jv_name = journal_entry.name
 				self.update_salary_slip_status(jv_name = jv_name)
 			except Exception as e:
