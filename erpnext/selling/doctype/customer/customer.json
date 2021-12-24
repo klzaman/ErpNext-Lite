@@ -62,6 +62,7 @@
   "market_segment",
   "industry",
   "language",
+  "print_to_date",
   "is_frozen",
   "column_break_38",
   "loyalty_program",
@@ -260,6 +261,11 @@
    "label": "Print Language",
    "options": "Language"
   },
+  {
+    "fieldname": "print_to_date",
+    "fieldtype": "Date",
+    "label": "Print to date"
+   },
   {
    "depends_on": "eval:!doc.__islocal",
    "fieldname": "address_contacts",
